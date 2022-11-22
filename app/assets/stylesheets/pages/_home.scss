@@ -1,1 +1,95 @@
 // Specific CSS for your home-page
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+
+h1 {
+  font-family: 'monoton', cursive;
+  color: white;
+  text-align: center;
+  padding: 5em;
+  font-size: 3em;
+}
+
+.banner {
+  background-position: center;
+}
+
+.card-product {
+  // overflow: hidden;
+  // height: 27rem;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  width: 45%;
+  margin: 0px;
+
+  img {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  h2 {
+    font-family: $body-font;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  p {
+    font-family: $body-font;
+    font-size: 16px;
+    line-height: 1.4;
+    opacity: .7;
+    margin-bottom: 0;
+    margin-top: 8px;
+  }
+}
+
+.card-product-infos {
+  padding: 32px;
+  text-align: start;
+
+  button {
+    display: inline-block;
+    margin-top: 20px;
+  }
+}
+
+.dark-background {
+  background-color: $blue-font;
+  color: white;
+}
+
+footer {
+  font-family: $body-font;
+  text-align: center;
+  font-size: 1.9em;
+  padding: 40px 40px;
+  margin: 0 auto 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    font-weight: bold;
+  }
+
+  ul {
+    size: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+  }
+  
+  a {
+    color: $yellow;
+    text-decoration: none;
+  }
+}
+
+.address {
+  font-style: normal;
+  font-size: 0.8em;
+  margin-bottom: 30px;
+}
