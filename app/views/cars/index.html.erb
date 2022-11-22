@@ -1,11 +1,35 @@
 <div class="container">
-  <h1 class="text-center"><strong>Carss</strong></h1>
+  <h1 class="text-center"><strong>Cars</strong></h1>
 </div>
 
-<div class="container">
-    <% @cars.each do |car| %>
-        <%= link_to car_path(car), class:"btn btn-primary hover:text-primary " do %>
-        <%= car.brand %>
-        <% end %>
-    <% end %>
+<%# SEARCH CARD %>
+
+<div class="container mb-5 col-3">
+  <%= form_with url: cars_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find a car" %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+<%# CAR LISTER %>
+
+<div class="container d-flex row justify-content-center w-100 m-auto">
+  <% @cars.each do |car| %>
+    <div class="container py-2 col-4">
+      <div class="card-car">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_894080-MLB42149766034_062020-F.webp" />
+        <div class="card-car-infos">
+          <div>
+            <h2><%= car.brand %> - <%= car.model %></h2>
+            <p>Short description here!</p>
+            <%= link_to 'Ver', car_path(car), class:"btn btn-primary hover:text-primary "%>
+          </div>
+          <h2 class="card-car-pricing">£99.99</h2>
+        </div>
+      </div>
+     </div>
+  <% end %>
 </div>

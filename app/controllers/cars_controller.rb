@@ -2,7 +2,11 @@ class CarsController < ApplicationController
   before_action :set_car, only: %i[ show edit update destroy ]
 
   def index
-    @cars = Car.all
+    if params[:query].present?
+      @cars = Car.where("model ILIKE ?", "%#{params[:query]}%")
+    else
+      @cars = Car.all
+    end
   end
 
   def show
