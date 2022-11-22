@@ -1,2 +1,11 @@
-<h1>Cars#index</h1>
-<p>Find me in app/views/cars/index.html.erb</p>
+<div class="container">
+  <h1 class="text-center"><strong>Cars</strong></h1>
+</div>
+
+<div class="container">
+    <% @cars.each do |car| %>
+        <%= link_to car_path(car), class:"btn btn-primary hover:text-primary " do %>
+        <%= car.brand %>
+        <% end %>
+    <% end %>
+</div>
