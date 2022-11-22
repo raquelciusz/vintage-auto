@@ -53,7 +53,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_22_174001) do
     t.string "location"
     t.boolean "available"
     t.text "description"
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "photo_url"
