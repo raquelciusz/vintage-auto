@@ -4,13 +4,16 @@
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-    <div class="form-bg">
-      <div class="form-inputs">
+    <div class="d-flex justify-content-around mt-5 mb-5">
+      <%# <div class="form-inputs">  %>
+      <div class=>
           <%= simple_form_for @car do |f| %>
           <%= f.input :model, placeholder: 'model' %>
           <%= f.input :photos, as: :file, input_html: { multiple: true } %>
           <%= f.input :year, placeholder: 'year' %>
           <%= f.input :color, placeholder: 'color' %>
+      </div>    
+      <div>
           <%= f.input :km, placeholder: 'Kilometers' %>
           <%= f.input :price, placeholder: 'price' %>
           <%= f.input :location, placeholder: 'location' %>
@@ -18,6 +21,7 @@
           <%= f.submit class: 'btn btn-flat' %>
           <% end %>
       </div>
-    </div>
+      </div>
+    <%# </div> %>
   <% end %>
 </div>
