@@ -1,7 +1,7 @@
 // Specific CSS for your home-page
 @import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
 
-h1 {
+.title-home {
   font-family: 'monoton', cursive;
   color: white;
   text-align: center;
@@ -81,7 +81,7 @@ footer {
     list-style: none;
     padding: 0;
   }
-  
+
   a {
     color: $yellow;
     text-decoration: none;
