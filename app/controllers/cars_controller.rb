@@ -19,7 +19,7 @@ class CarsController < ApplicationController
 
   def update
     if @car.update!(car_params)
-      redirect_to @car
+      redirect_to @car, notice: "Your car was successfully updated"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -32,6 +32,8 @@ class CarsController < ApplicationController
 
   def create
     @car = Car.create(car_params)
+    @car.user = User.first
+    # current_user
     if @car.save
       redirect_to car_path(@car)
     else
@@ -48,6 +50,6 @@ class CarsController < ApplicationController
   end
 
   def car_params
-    params.require(:car).permit(:brand, :model, :year, :km, :color, :type, :price, :location, :avaiable, :description, :user_id)
+    params.require(:car).permit(:brand, :model, :year, :km, :color, :type, :price, :location, :avaiable, :description, :user_id, :photo_url)
   end
 end

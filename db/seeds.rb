@@ -7,6 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 require 'faker'
+require "open-uri"
 
 type = ["Fusca", "Kombi"]
 model = ["Herbie", "Fusca Conversível", "Super Fuscão", "Fusca Baja", "Fusca Original"]
@@ -22,7 +23,7 @@ user = User.create!(email: 'teste@teste.com', password: 123456)
 
 puts 'Creating cars'
 20.times do
-  car = Car.create!(
+  car = Car.new(
     brand: 'Volkswagen',
     selection: type.sample,
     model: model.sample,
@@ -33,7 +34,11 @@ puts 'Creating cars'
     location: location.sample,
     description: "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     user:
-  );
+  )
+  car.photo_url.attach(io: File.open(Rails.root.join('public/fusca1.jpg')), filename: 'fusca1.jpg', content_type: "image/jpg")
+  car.photo_url.attach(io: File.open(Rails.root.join('public/fusca2.jpg')), filename: 'fusca2.jpg', content_type: "image/jpg")
+  car.photo_url.attach(io: File.open(Rails.root.join('public/fusca3.jpg')), filename: 'fusca3.jpg', content_type: "image/jpg")
+  car.save!
   puts "car #{car.id} is created."
 end
 
