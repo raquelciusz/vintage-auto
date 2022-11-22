@@ -1,9 +1,10 @@
 class CarsController < ApplicationController
-  before_action :set_car, only: %i[ show edit update destroy ]
+  before_action :set_car, only: %i[show edit update destroy]
 
   def index
     if params[:query].present?
-      @cars = Car.where("model ILIKE ?", "%#{params[:query]}%")
+      sql_query = "brand ILIKE :query OR model ILIKE :query OR color ILIKE :query"
+      @cars = Car.where(sql_query, query: "%#{params[:query]}%")
     else
       @cars = Car.all
     end
