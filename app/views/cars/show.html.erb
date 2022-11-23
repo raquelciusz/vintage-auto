@@ -44,6 +44,12 @@
     </div>
   </div>
 
+  <div class="container bg-light rounded gap-3 d-grid p-5">
+    <% if policy(@car).edit? %>
+      <%= link_to "Edit this offer", edit_car_path(@car) %> |
+    <% end %>
+    <%= button_to "Destroy this offer", @car, method: :delete if policy(@car).destroy? %>
+  </div>
 
   <div class="container bg-light rounded gap-3 d-grid p-5">
       <p class="text-center"><%= @car.description %></p>
