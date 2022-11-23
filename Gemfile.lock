@@ -119,6 +119,9 @@ GEM
     faker (3.0.0)
       i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
+    file_validators (3.0.0)
+      activemodel (>= 3.2)
+      mime-types (>= 1.0)
     font-awesome-sass (6.2.1)
       sassc (~> 2.0)
     globalid (1.0.0)
@@ -281,6 +284,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   faker
+  file_validators
   font-awesome-sass (~> 6.1)
   jbuilder
   jsbundling-rails
