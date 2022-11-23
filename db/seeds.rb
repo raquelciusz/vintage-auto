@@ -19,6 +19,7 @@ Car.destroy_all
 puts 'Cleaning users'
 User.destroy_all
 
+buyer = User.create!(email: 'buyer@buyer.com', password: 123123)
 user = User.create!(first_name: 'Teste', last_name: 'dos testes', email: 'teste@teste.com', password: 123456)
 
 puts 'Creating Fusca'
@@ -39,6 +40,8 @@ puts 'Creating Fusca'
   fusca.photo_url.attach(io: File.open(Rails.root.join('public/fusca2.jpg')), filename: 'fusca2.jpg', content_type: "image/jpg")
   fusca.photo_url.attach(io: File.open(Rails.root.join('public/fusca3.jpg')), filename: 'fusca3.jpg', content_type: "image/jpg")
   fusca.save!
+  Sale.create(user: buyer, car: fusca)
+  puts "car #{fusca.id} is created."
   puts "car #{fusca.id} is created."
 end
 
