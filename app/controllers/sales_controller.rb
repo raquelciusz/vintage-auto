@@ -1,7 +1,9 @@
 class SalesController < ApplicationController
+
   def create
     @car = Car.find(params[:car_id])
     @sale = Sale.new(car: @car, user: current_user)
+    authorize @sale
 
     if @sale.save
       redirect_to sale_path(@sale), status: :see_other
@@ -13,6 +15,7 @@ class SalesController < ApplicationController
   def show
     @sale = Sale.find(params[:id])
     @car = @sale.car
+    authorize @sale
   end
 
   def destroy
