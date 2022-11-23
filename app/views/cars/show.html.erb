@@ -1,4 +1,4 @@
-<div class="bg-dark d-grid gap-3 mb-5">
+<div class="bg-dark d-grid gap-3">
   <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -39,20 +39,18 @@
       </div>
       <div>
         <h3 class="h5-show">Price</h5>
-        <p>R$ <%= @car.price %></p>
+        <p><%= number_to_currency(@car.price, unit: "R$", separator: ",", delimiter: ".") %></p>
       </div>
-    </div>
-  </div>
-
-  <div class="container bg-light rounded gap-3 d-grid p-5">
-    <% if policy(@car).edit? %>
-      <%= link_to "Edit this offer", edit_car_path(@car) %> |
-    <% end %>
-    <%= button_to "Destroy this offer", @car, method: :delete if policy(@car).destroy? %>
-  </div>
-
-  <div class="container bg-light rounded gap-3 d-grid p-5">
+      </div>
       <p class="text-center"><%= @car.description %></p>
+      <div class="text-center">
+        <%= link_to 'Buy', car_sales_path(@car), data:{ turbo_method: :post}, class:"btn btn-success hover:text-success rounded-pill shadow-sm border m-1 px-5" %>
+        <%= link_to 'Back', cars_path, class:"btn btn-secondary hover:text-secondary rounded-pill shadow-sm border m-1 px-5" %>
+        <% if policy(@car).edit? %>
+          <%= link_to "Edit", edit_car_path(@car), class:"btn btn-secondary hover:text-secondary rounded-pill shadow-sm border m-1 px-5" %>
+        <% end %>
+        <%= button_to "Delete", @car, class:"btn btn-danger hover:text-danger rounded-pill shadow-sm border m-1 px-4", method: :delete if policy(@car).destroy? %>
+      </div>
   </div>
 
   <div class="container bg-light rounded gap-3 d-grid p-5">
@@ -66,20 +64,19 @@
         <li class="list-group-item">Travas elétricas</li>
       </ul>
     </div>
-    <%= link_to 'Buy', car_sales_path(@car), data:{ turbo_method: :post} %>
+
   </div>
 
-  <div class="container bg-light rounded gap-3 d-grid p-5">
-    <div class='d-flex flex-column justify-content-around'>
+  <div class="container bg-light rounded gap-3 d-grid p-5 mb-5">
+    <div class='d-flex flex-column justify-content-center'>
       <h5 class="h5-show">About Seller</h5>
-      <p>Mateus</p>
+      <p><%= @car.user.first_name %></p>
+      <p><%= @car.user.last_name %></p>
+      <p><%= @car.user.email %></p>
       <p><%= @car.location %></p>
       <p>Pessoa Fisica</p>
       <p>Telefone</p>
     </div>
   </div>
 
-  <div class="container bg-light rounded gap-3 d-grid p-5">
-    <%= link_to "all offers", cars_path, class: "btn btn-primary hover:text-primary rounded-pill shadow-sm border px-4" %>
-  </div>
 </div>
