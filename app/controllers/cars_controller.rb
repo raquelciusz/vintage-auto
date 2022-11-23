@@ -1,5 +1,8 @@
 class CarsController < ApplicationController
   before_action :set_car, only: %i[show edit update destroy]
+  skip_before_action :authenticate_user!, only: %i[index show]
+  skip_after_action :verify_authorized, only: :show
+  skip_after_action :verify_policy_scoped, only: :index
 
   def index
     @cars = policy_scope(Car)
@@ -21,7 +24,6 @@ class CarsController < ApplicationController
   end
 
   def update
-    authorize @car
     if @car.update!(car_params)
       redirect_to @car, notice: "Your car was successfully updated"
     else
@@ -30,7 +32,6 @@ class CarsController < ApplicationController
   end
 
   def destroy
-    authorize @car
     @car.destroy
     redirect_to cars_path, notice: "Car was successfully destroyed."
   end
@@ -48,12 +49,12 @@ class CarsController < ApplicationController
   end
 
   def edit
-    authorize @car
   end
 
   private
   def set_car
     @car = Car.find(params[:id])
+    authorize @car
   end
 
   def car_params

@@ -17,5 +17,4 @@ class SalePolicy < ApplicationPolicy
   def destroy?
     record.user == user || record.car.user == user
   end
-
 end
