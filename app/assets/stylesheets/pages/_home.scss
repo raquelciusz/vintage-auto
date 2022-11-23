@@ -1,7 +1,7 @@
 // Specific CSS for your home-page
 @import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
 
-h1 {
+.title-home {
   font-family: 'monoton', cursive;
   color: white;
   text-align: center;
@@ -9,7 +9,7 @@ h1 {
   font-size: 3em;
 }
 
-.banner {
+.banner-landing-page {
   background-position: center;
 }
 
@@ -20,38 +20,51 @@ h1 {
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   width: 45%;
   margin: 0px;
+  border-radius: 5px;
 
   img {
     height: 300px;
     width: 100%;
     object-fit: cover;
+    border-radius: 5px;
   }
 
   h2 {
     font-family: $body-font;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bold;
     margin: 0;
   }
 
   p {
     font-family: $body-font;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 1.4;
     opacity: .7;
     margin-bottom: 0;
     margin-top: 8px;
   }
+
+    button {
+      background-color: $gray-navbar;
+      border-radius: 5px;
+      font-weight: 300;
+      color: white;
+    }
+}
+
+.button {
+  background-color: $gray-navbar;
+  border-radius: 5px;
+  font-weight: 300;
+  color: white;
+  display: inline-block;
+  margin-top: 20px;
 }
 
 .card-product-infos {
   padding: 32px;
   text-align: start;
-
-  button {
-    display: inline-block;
-    margin-top: 20px;
-  }
 }
 
 .dark-background {
@@ -71,6 +84,7 @@ footer {
 
   h2 {
     font-weight: bold;
+    font-family: $body-font;
   }
 
   ul {
@@ -81,15 +95,17 @@ footer {
     list-style: none;
     padding: 0;
   }
-  
+
   a {
     color: $yellow;
     text-decoration: none;
+    font-family: $body-font;
   }
-}
 
-.address {
-  font-style: normal;
-  font-size: 0.8em;
-  margin-bottom: 30px;
+  .address {
+    font-family: $body-font;
+    font-style: normal;
+    font-size: 0.8em;
+    margin-bottom: 30px;
+  }
 }

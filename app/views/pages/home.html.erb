@@ -1,6 +1,6 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://i.pinimg.com/originals/6a/ff/ac/6affacd13a47de0a90ffb0a51a1bc388.jpg);">
+<div class="banner-landing-page" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://i.pinimg.com/originals/6a/ff/ac/6affacd13a47de0a90ffb0a51a1bc388.jpg);">
   <div class="container">
-    <h1>Vintage Garage</h1>
+    <h1 class="title-home">Vintage Garage</h1>
   </div>
 </div>
 
@@ -10,9 +10,9 @@
   <div class="card-product">
     <img src="https://www.classicvwbugs.com/wp-content/uploads/2014/03/1955vert1.jpg" />
     <div class="card-product-infos">
-      <h2>Fuscas</h2>
-      <p>Lindos fusquinhas <strong>vintage</strong> só aqui.</p>
-      <button type="button" class="btn btn-primary">See all offers</button>
+      <h2>Beetles</h2>
+      <p>Rock like a Beatle in your own<strong> Beetle!</strong>.</p>
+      <%= link_to "See selection", cars_path, class: "button btn" %>
       <%# CARDS TEM QUE SER CLICÁVEIS ROTAS (?) %>
     </div>
   </div>
@@ -20,10 +20,9 @@
   <div class="card-product">
     <img src="https://lh3.googleusercontent.com/Y8Mzg6voBxfNdORqEIr2kB17QizaKG-YXT267jLGNcsIw9cIz2PbLIkNCmHV2U2LUy0bSAgoVLv-KSOCvfpR=s1000" />
     <div class="card-product-infos">
-      <h2>Kombis</h2>
-      <p>Automóveis<strong> vintage.</strong></p>
-      <button type="button" class="btn btn-primary">See all offers</button>
-      <%# <%= button_to "See all offers", cars_path(qu) %>
+      <h2>VW vans</h2>
+      <p>The best<strong> vintage</strong> VW vans.</p>
+      <%= link_to "See selection", cars_path, class: "button btn" %>
       <%# CARDS TEM QUE SER CLICÁVEIS ROTAS (?) %>
     </div>
   </div>
