@@ -1,6 +1,9 @@
 class CarsController < ApplicationController
   before_action :set_car, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, only: %i[index show]
+  skip_after_action :verify_authorized, only: :show
+  skip_after_action :verify_policy_scoped, only: :index
+
   def index
     @cars = policy_scope(Car)
     if params[:query].present?
