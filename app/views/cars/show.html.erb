@@ -58,5 +58,6 @@
     <div>
       <p><%= @car.description %></p>
     </div>
+    <%= link_to 'Buy', car_sales_path(@car), data:{ turbo_method: :post} %>
   </div>
 </div>
