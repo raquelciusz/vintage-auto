@@ -9,8 +9,7 @@
 require 'faker'
 require "open-uri"
 
-type = ["Fusca", "Kombi"]
-model = ["Herbie", "Fusca Conversível", "Super Fuscão", "Fusca Baja", "Fusca Original"]
+model_fusca = ["Herbie", "Fusca Conversível", "Super Fuscão", "Fusca Baja", "Fusca Original"]
 color = ["White", "Black", "Red", "Black"]
 location = ["Sao Paulo", "Rio de Janeiro", "Curitiba", "Brasilia", "Florianopolis"]
 
@@ -23,10 +22,10 @@ user = User.create!(email: 'teste@teste.com', password: 123456)
 
 puts 'Creating cars'
 20.times do
-  car = Car.new(
+  fusca = Car.new(
     brand: 'Volkswagen',
-    selection: type.sample,
-    model: model.sample,
+    selection: "Fusca",
+    model: model_fusca.sample,
     year: (1990..2010).to_a.sample,
     km: (200..400).to_a.sample,
     color: color.sample,
