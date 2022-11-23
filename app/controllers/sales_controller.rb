@@ -1,26 +1,26 @@
 class SalesController < ApplicationController
-  def index
-    @sales = Sale.all
-  end
 
   def create
-    @sale = Sale.create(sale_params)
+    @car = Car.find(params[:car_id])
+    @sale = Sale.new(car: @car, user: current_user)
+    authorize @sale
+
     if @sale.save
-      redirect_to sale_path(@sale)
+      redirect_to sale_path(@sale), status: :see_other
     else
-      render :new, status: :unprocessable_entity
+      redirect_to car_path(@car.id)
     end
+  end
+
+  def show
+    @sale = Sale.find(params[:id])
+    @car = @sale.car
+    authorize @sale
   end
 
   def destroy
     @sale = Sale.find(params[:id])
     @sale.destroy
-    redirect_to sales_path, notice: "Sale was successfully destroyed."
-  end
-
-  private
-
-  def sale_params
-    params.require(:car).permit(:user_id, :car_id)
+    redirect_to cars_path, notice: "Sale was successfully destroyed."
   end
 end
