@@ -12,6 +12,10 @@ class SalesController < ApplicationController
     end
   end
 
+  def index
+    @sales = policy_scope(Sale)
+  end
+
   def show
     @sale = Sale.find(params[:id])
     @car = @sale.car
