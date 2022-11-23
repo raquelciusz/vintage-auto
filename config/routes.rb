@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'sales/index'
-  get 'sales/create'
-  resources :cars
+  resources :cars do
+    resources :sales, only: :create
+  end
+  resources :sales, only: :show
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
