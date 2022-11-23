@@ -39,11 +39,9 @@
     </div>
   </div>
 
-  <div class="container bg-light rounded gap-3 d-grid p-5">
-    <% if policy(@car).edit? %>
-      <%= link_to "Edit this offer", edit_car_path(@car) %> |
-    <% end %>
-    <%= button_to "Destroy this offer", @car, method: :delete if policy(@car).destroy? %>
+  <div class="container bg-light rounded gap-3 d-grid p-5 d-flex">
+    <%= link_to "Edit this offer", edit_car_path(@car), class: 'btn btn-primary hover:text-primary rounded-pill shadow-sm border px-4' if policy(@car).edit? %>
+    <%= button_to "Destroy this offer", @car, method: :delete, class: 'btn btn-primary hover:text-primary rounded-pill shadow-sm border px-4' if policy(@car).destroy? %>
   </div>
 
   <div class="container bg-light rounded gap-3 d-grid p-5">
@@ -61,7 +59,7 @@
         <li class="list-group-item">Travas elétricas</li>
       </ul>
     </div>
-    <%= link_to 'Buy', car_sales_path(@car), data:{ turbo_method: :post} %>
+    <%= link_to 'Buy', car_sales_path(@car),class: 'btn btn-primary hover:text-primary rounded-pill shadow-sm border px-4', data:{ turbo_method: :post} %>
   </div>
 
   <div class="container bg-light rounded gap-3 d-grid p-5">
