@@ -1,2 +1,19 @@
-<h1>My purchases:</h1>
-<%=  %>
+
+<div class="container">
+  <h1 class="text-center my-5">My purchases:</h1>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Car</th>
+        <th scope="col">Price</th>
+      </tr>
+      <tr>
+      <% @sales.each do |sale|%>
+        <td><%= sale.car.year %> <%= sale.car.brand %> <%= sale.car.model %></td>
+        <td>R$ <%= sale.car.price %></td>
+      </tr>
+    </thead>
+      <% end %>
+  </table>
+</div>
