@@ -1,4 +1,4 @@
-<div class="bg-dark">
+<div class="bg-dark d-grid gap-3 mb-5">
   <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -7,7 +7,7 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        
+
         <img src="https://res.cloudinary.com/dls480qdn/image/upload/v1669138151/samples/VW-Fusca_etqmun.jpg" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
@@ -27,14 +27,58 @@
     </button>
   </div>
 
-  <div class="container bg-light rounded">
-    <h1><strong><%= @car.model %> <%= @car.selection %></strong></h1>
-    <p><%= @car.location %></p>
-    <p><%= @car.year %></p>
-    <p><%= @car.km %></p>
-    <p><%= @car.color %></p>
-    <div>
-      <p><%= @car.description %></p>
+  <div class="container bg-light rounded gap-3 d-grid p-3">
+    <div class="d-flex justify-content-around">
+      <div class="flex-grow-1">
+        <h1 class="h1-show">
+          <strong>
+            <p class='d-inline car-selection'><%= @car.year %></p>
+            <p class='d-inline car-name'><%= @car.model %></p>
+          </strong>
+        </h1>
+      </div>
+      <div>
+        <h3 class="h5-show">Price</h5>
+        <p>R$ <%= @car.price %></p>
+      </div>
     </div>
+  </div>
+
+  <div class="container bg-light rounded gap-3 d-grid p-5">
+    <% if policy(@car).edit? %>
+      <%= link_to "Edit this offer", edit_car_path(@car) %> |
+    <% end %>
+    <%= button_to "Destroy this offer", @car, method: :delete if policy(@car).destroy? %>
+  </div>
+
+  <div class="container bg-light rounded gap-3 d-grid p-5">
+      <p class="text-center"><%= @car.description %></p>
+  </div>
+
+  <div class="container bg-light rounded gap-3 d-grid p-5">
+    <div class='d-flex flex-column justify-content-center text-center list-inline mx-auto'>
+      <h5 class="h5-show">Vehicle Items</h5>
+      <ul class="list-group list-group-horizontal text-center">
+        <li class="list-group-item">Airbag</li>
+        <li class="list-group-item">Alarme</li>
+        <li class="list-group-item">CD Player</li>
+        <li class="list-group-item">Rádio</li>
+        <li class="list-group-item">Travas elétricas</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container bg-light rounded gap-3 d-grid p-5">
+    <div class='d-flex flex-column justify-content-around'>
+      <h5 class="h5-show">About Seller</h5>
+      <p>Mateus</p>
+      <p><%= @car.location %></p>
+      <p>Pessoa Fisica</p>
+      <p>Telefone</p>
+    </div>
+  </div>
+
+  <div class="container bg-light rounded gap-3 d-grid p-5">
+    <%= link_to "all offers", cars_path, class: "btn btn-primary hover:text-primary rounded-pill shadow-sm border px-4" %>
   </div>
 </div>
