@@ -22,7 +22,7 @@ User.destroy_all
 user = User.create!(first_name: 'Teste', last_name: 'dos testes', email: 'teste@teste.com', password: 123456)
 
 puts 'Creating Fusca'
-20.times do
+10.times do
   fusca = Car.new(
     brand: 'Volkswagen',
     selection: "Fusca",
@@ -43,7 +43,7 @@ puts 'Creating Fusca'
 end
 
 puts 'Creating Kombi'
-20.times do
+10.times do
   kombi = Car.new(
     brand: 'Volkswagen',
     selection: "Kombi",
