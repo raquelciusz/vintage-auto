@@ -7,7 +7,7 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        
+
         <img src="https://res.cloudinary.com/dls480qdn/image/upload/v1669138151/samples/VW-Fusca_etqmun.jpg" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
@@ -28,11 +28,33 @@
   </div>
 
   <div class="container bg-light rounded">
-    <h1><strong><%= @car.model %> <%= @car.selection %></strong></h1>
-    <p><%= @car.location %></p>
-    <p><%= @car.year %></p>
-    <p><%= @car.km %></p>
-    <p><%= @car.color %></p>
+    <div class="d-flex justify-content-around">
+      <div class="flex-grow-1">
+        <h1 class="h1-show"><p class='d-inline car-name'><strong><%= @car.model %></p> <p class='d-inline car-selection'><%= @car.selection %></strong></p></h1>
+      </div>
+      <div>
+        <h3 class="h5-show">Price</h5>
+        <p>R$ <%= @car.price %></p>
+      </div>
+    </div>
+    <div class='d-flex flex-row justify-content-around'>
+      <div>
+        <h5 class="h5-show">Location</h5>
+        <p><%= @car.location %></p>
+      </div>
+      <div>
+        <h5 class="h5-show">Year</h5>
+        <p><%= @car.year %></p>
+      </div>
+      <div>
+        <h5 class="h5-show">Km</h5>
+        <p><%= @car.km %></p>
+      </div>
+      <div>
+        <h5 class="h5-show">Color</h5>
+        <p><%= @car.color %></p>
+      </div>
+    </div>
     <div>
       <p><%= @car.description %></p>
     </div>
