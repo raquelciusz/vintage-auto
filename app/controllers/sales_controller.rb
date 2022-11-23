@@ -19,6 +19,7 @@ class SalesController < ApplicationController
   end
 
   private
+
   def sale_params
     params.require(:car).permit(:user_id, :car_id)
   end
