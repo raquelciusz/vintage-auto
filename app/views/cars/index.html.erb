@@ -8,20 +8,18 @@
   <%= form_with url: cars_path, method: :get, class: "d-flex" do %>
     <%= text_field_tag :query,
       params[:query],
-      class: "form-control rounded-pill bg-white shadow-sm border",
+      class: "form-control rounded-pill bg-white shadow border",
       placeholder: "Find a car" %>
-    <%= submit_tag "Search", class: "btn btn-primary rounded-pill bg-blue shadow-sm border" %>
+    <%= submit_tag "Search", class: "btn btn-secondary rounded-pill bg-blue shadow-sm border px-5 shadow" %>
   <% end %>
 </div>
 
-<%# CAR LISTER %>
-
-<div class="container d-flex row justify-content-center w-100 m-auto">
+<div class="container d-flex row justify-content-center w-100 m-auto bg-white text-dark shadow">
   <% @cars.each do |car| %>
   <% if car.available = true %>
     <div class="container py-2 col-4">
-      <div class="card-car">
-        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_894080-MLB42149766034_062020-F.webp" class="shadow-sm border" />
+      <div class="card-car my-3">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_894080-MLB42149766034_062020-F.webp" class="shadow-sm border-2 rounded" />
         <div class="card-car-infos">
           <div>
             <h2><%= car.year %> <%= car.brand %> <%= car.model %></h2>
@@ -30,14 +28,15 @@
             <h6><strong>Color:</strong> <%= car.color %></h6>
             <h6><strong>Type: </strong><%= car.selection %></h6>
             <h6><strong>Location: </strong><%= car.location %></h6>
-            <p class="w-100 my-4"><%= car.description %></p>
-            <%= link_to 'Ver', car_path(car), class:"btn btn-primary hover:text-primary rounded-pill shadow-sm border px-4"%>
+            <h6 class="mw-100 my-3"><%= car.description %></h6>
+            <div class="d-flex justify-content-between">
+            <%= link_to 'Ver', car_path(car), class:"btn btn-secondary hover:text-secondary rounded-pill shadow-sm border px-5 shadow"%>
+          <h2 class="card-car-pricing"><%= number_to_currency(car.price, unit: "R$", separator: ",", delimiter: ".") %></h2>
+            </div>
           </div>
-          <h2 class="card-car-pricing">R$<%= car.price.round %></h2>
         </div>
       </div>
      </div>
   <% end %>
   <% end %>
-  <%= link_to "New car", new_car_path if policy(Car).new? %>
 </div>
