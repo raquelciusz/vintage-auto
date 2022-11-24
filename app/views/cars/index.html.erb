@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="text-center my-5"><strong>Find your car</strong></h1>
+  <h1 class="text-center my-5">Find your car</h1>
 </div>
 
 <%# SEARCH CARD %>
@@ -12,14 +12,43 @@
       placeholder: "Find a car" %>
     <%= submit_tag "Search", class: "btn btn-secondary rounded-pill bg-blue shadow-sm border px-5 shadow" %>
   <% end %>
+  <% if @cars.empty? %>
+    <div class="alert alert-danger" role="alert">
+      We couldn't find any results for <strong><%= params[:query].upcase %></strong>
+    </div>
+  <% end %>
 </div>
 
 <div class="container d-flex row justify-content-center w-100 m-auto bg-white text-dark shadow">
   <% @cars.each do |car| %>
-  <% if car.available = true %>
+  <% if car.available %>
     <div class="container py-2 col-4">
       <div class="card-car my-3">
-        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_894080-MLB42149766034_062020-F.webp" class="shadow-sm border-2 rounded" />
+        <div id=<%= "carouselExampleIndicators#{car.id}" %> class="carousel slide" data-bs-interval="false">
+        <div class="carousel-inner">
+          <% if car.photos.attached? %>
+          <% car.photos.each_with_index do |photo, index| %>
+          <div class="carousel-item <%= index.zero? ? "active" : "" %>">
+            <%= cl_image_tag photo.key, class: "d-block w-100", height: 200, width: 400, crop: :fill, style: "border-radius: 4px 4px 0 0" %>
+          </div>
+          <% end %>
+          <% else %>
+          <div class="carousel-item active">
+            <%= image_tag 'no-image-found.png', class: "d-block w-100", height: 200, width: 400, crop: :fill %>
+          </div>
+          <% end %>
+        </div>
+        <button class="carousel-control-prev" type="button"
+          data-bs-target="<%= "#carouselExampleIndicators#{car.id}" %>" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button"
+          data-bs-target="<%= "#carouselExampleIndicators#{car.id}" %>" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
         <div class="card-car-infos">
           <div>
             <h2><%= car.year %> <%= car.brand %> <%= car.model %></h2>
@@ -35,8 +64,7 @@
             </div>
           </div>
         </div>
-      </div>
-     </div>
-  <% end %>
+    </div>
+    <% end %>
   <% end %>
 </div>

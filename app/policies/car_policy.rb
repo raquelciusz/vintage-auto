@@ -36,6 +36,10 @@ class CarPolicy < ApplicationPolicy
     owner?
   end
 
+  def mycars?
+    true
+  end
+
   private
 
   def owner?
