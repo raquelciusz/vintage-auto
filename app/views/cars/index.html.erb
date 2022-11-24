@@ -21,27 +21,50 @@
 
 <div class="container d-flex row justify-content-center w-100 m-auto bg-white text-dark shadow">
   <% @cars.each do |car| %>
-    <% if car.available = true %>
-      <div class="container py-2 col-4">
-        <div class="card-car my-3">
-          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_894080-MLB42149766034_062020-F.webp" class="shadow-sm border-2 rounded" />
-          <div class="card-car-infos">
-            <div>
-              <h2><%= car.year %> <%= car.brand %> <%= car.model %></h2>
-              <br>
-              <h6><strong>KM:</strong> <%= car.km %>
-              <h6><strong>Color:</strong> <%= car.color %></h6>
-              <h6><strong>Type: </strong><%= car.selection %></h6>
-              <h6><strong>Location: </strong><%= car.location %></h6>
-              <h6 class="mw-100 my-3"><%= car.description %></h6>
-              <div class="d-flex justify-content-between">
-              <%= link_to 'Ver', car_path(car), class:"btn btn-secondary hover:text-secondary rounded-pill shadow-sm border px-5 shadow"%>
-            <h2 class="card-car-pricing"><%= number_to_currency(car.price, unit: "R$", separator: ",", delimiter: ".") %></h2>
-              </div>
+  <% if car.available %>
+    <div class="container py-2 col-4">
+      <div class="card-car my-3">
+        <div id=<%= "carouselExampleIndicators#{car.id}" %> class="carousel slide" data-bs-interval="false">
+        <div class="carousel-inner">
+          <% if car.photos.attached? %>
+          <% car.photos.each_with_index do |photo, index| %>
+          <div class="carousel-item <%= index.zero? ? "active" : "" %>">
+            <%= cl_image_tag photo.key, class: "d-block w-100", height: 200, width: 400, crop: :fill, style: "border-radius: 4px 4px 0 0" %>
+          </div>
+          <% end %>
+          <% else %>
+          <div class="carousel-item active">
+            <%= image_tag 'no-image-found.png', class: "d-block w-100", height: 200, width: 400, crop: :fill %>
+          </div>
+          <% end %>
+        </div>
+        <button class="carousel-control-prev" type="button"
+          data-bs-target="<%= "#carouselExampleIndicators#{car.id}" %>" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button"
+          data-bs-target="<%= "#carouselExampleIndicators#{car.id}" %>" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+        <div class="card-car-infos">
+          <div>
+            <h2><%= car.year %> <%= car.brand %> <%= car.model %></h2>
+            <br>
+            <h6><strong>KM:</strong> <%= car.km %>
+            <h6><strong>Color:</strong> <%= car.color %></h6>
+            <h6><strong>Type: </strong><%= car.selection %></h6>
+            <h6><strong>Location: </strong><%= car.location %></h6>
+            <h6 class="mw-100 my-3"><%= car.description %></h6>
+            <div class="d-flex justify-content-between">
+            <%= link_to 'Ver', car_path(car), class:"btn btn-secondary hover:text-secondary rounded-pill shadow-sm border px-5 shadow"%>
+          <h2 class="card-car-pricing"><%= number_to_currency(car.price, unit: "R$", separator: ",", delimiter: ".") %></h2>
             </div>
           </div>
         </div>
-      </div>
+    </div>
     <% end %>
   <% end %>
 </div>
