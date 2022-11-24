@@ -1,0 +1,32 @@
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <%= link_to root_path, class: "navbar-brand" do %>
+          <%= image_tag "", class: "shadow" %>
+          <% end %>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <% if user_signed_in? %>
+              <%= link_to "Home", root_path, class: "nav-link" %>
+              <%= link_to "New car", new_car_path, class: "nav-link" if policy(Car).new? %>
+              <%= link_to "My purchases", sales_path, class: "nav-link" %>
+              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
+              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% else %>
+              <li class="nav-item">
+              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            <% end %>
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Another Link</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>

@@ -3,19 +3,24 @@
 
 .title-home {
   font-family: 'monoton', cursive;
-  color: white;
+  color: $green-water;
   text-align: center;
-  padding: 5em;
-  font-size: 3em;
+  display: inline-block;
+  width: 100%;
+  font-size: 5em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
 }
 
 .banner-landing-page {
   background-position: center;
+  width: 100%
 }
 
 .card-product {
-  // overflow: hidden;
-  // height: 27rem;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   width: 45%;
@@ -44,22 +49,6 @@
     margin-bottom: 0;
     margin-top: 8px;
   }
-
-    button {
-      background-color: $gray-navbar;
-      border-radius: 5px;
-      font-weight: 300;
-      color: white;
-    }
-}
-
-.button {
-  background-color: $gray-navbar;
-  border-radius: 5px;
-  font-weight: 300;
-  color: white;
-  display: inline-block;
-  margin-top: 20px;
 }
 
 .card-product-infos {
@@ -68,8 +57,8 @@
 }
 
 .dark-background {
-  background-color: $blue-font;
-  color: white;
+  background-color: $green-water;
+  color: $cream;
 }
 
 footer {
@@ -83,11 +72,13 @@ footer {
   align-items: center;
 
   h2 {
+    color: $cream;
     font-weight: bold;
     font-family: $body-font;
   }
 
   ul {
+    color: $cream;
     size: 20px;
     display: flex;
     justify-content: center;
@@ -97,13 +88,14 @@ footer {
   }
 
   a {
-    color: $yellow;
+    color: $cream;
     text-decoration: none;
     font-family: $body-font;
   }
 
   .address {
     font-family: $body-font;
+    color: $cream;
     font-style: normal;
     font-size: 0.8em;
     margin-bottom: 30px;

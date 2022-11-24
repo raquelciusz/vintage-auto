@@ -1,10 +1,12 @@
-<div class="banner-landing-page" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://i.pinimg.com/originals/6a/ff/ac/6affacd13a47de0a90ffb0a51a1bc388.jpg);">
+<%# <div class="banner-landing-page" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://i.pinimg.com/originals/6a/ff/ac/6affacd13a47de0a90ffb0a51a1bc388.jpg);">
   <div class="container">
-    <h1 class="title-home">Vintage Garage</h1>
   </div>
-</div>
+</div> %>
 
-<%# <h2>Automóveis</h2> %>
+<div class="banner-landing-page">
+  <h1 class="title-home">Vintage Garage</h1>
+  <%= video_tag "the-garage.mp4", :autoplay => true, :loop => true, muted: 'muted', class: :standard_post_video %>
+</div>
 
 <div class="d-flex justify-content-around mt-5 mb-5">
   <div class="card-product">
@@ -12,18 +14,16 @@
     <div class="card-product-infos">
       <h2>Beetles</h2>
       <p>Rock like a Beatle in your own<strong> Beetle!</strong>.</p>
-      <%= link_to "See selection", cars_path(query: "fusca"), class: "button btn" %>
-      <%# CARDS TEM QUE SER CLICÁVEIS ROTAS (?) %>
+      <%= link_to "See selection", cars_path(query: "beetle"), class: "button btn" %>
     </div>
   </div>
 
   <div class="card-product">
     <img src="https://lh3.googleusercontent.com/Y8Mzg6voBxfNdORqEIr2kB17QizaKG-YXT267jLGNcsIw9cIz2PbLIkNCmHV2U2LUy0bSAgoVLv-KSOCvfpR=s1000" />
     <div class="card-product-infos">
-      <h2>VW vans</h2>
+      <h2>Kombis</h2>
       <p>The best<strong> vintage</strong> VW vans.</p>
       <%= link_to "See selection", cars_path(query: "kombi"), class: "button btn" %>
-      <%# CARDS TEM QUE SER CLICÁVEIS ROTAS (?) %>
     </div>
   </div>
 </div>
