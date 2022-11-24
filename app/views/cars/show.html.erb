@@ -1,14 +1,14 @@
 <div class="bg-dark d-grid gap-3">
   <div id=<%= "carouselExampleIndicators#{@car.id}" %> class="carousel slide" data-bs-interval="false">
-    <div class="carousel-inner">
+    <div class="carousel-inner carousel-inner-show justify-content-center align-center">
       <% if @car.photos.attached? %>
       <% @car.photos.each_with_index do |photo, index| %>
-      <div class="carousel-item <%= index.zero? ? "active" : "" %>">
+      <div class="carousel-item carousel-show <%= index.zero? ? "active" : "" %>">
         <%= cl_image_tag photo.key, class: "d-block w-100", style: 'width:100%; height:auto;', crop: :fill %>
       </div>
       <% end %>
       <% else %>
-      <div class="carousel-item active">
+      <div class="carousel-item carousel-show active">
         <%= image_tag 'no-image-found.png', class: "d-block w-100", height: 300, width: 400, crop: :fill %>
       </div>
       <% end %>
@@ -28,17 +28,15 @@
       <div class="d-flex justify-content-around">
         <div>
           <h1 class="h1-show flex-grow-1">
-            <strong>
               <p class='d-inline car-selection'><%= @car.year %></p>
               <p class='d-inline car-name'><%= @car.model %></p>
-            </strong>
           </h1>
         </div>
-        <div>
-          <h3 class="h5-show">Price</h5>
-          <p><%= number_to_currency(@car.price, unit: "R$", separator: ",", delimiter: ".") %></p>
-        </div>
     </div>
+      <div class="text-center">
+        <h3 class="h5-show">Price</h5>
+        <p><%= number_to_currency(@car.price, unit: "R$", separator: ",", delimiter: ".") %></p>
+      </div>
       <p class="text-center"><%= @car.description %></p>
       <div class="text-center">
         <%= link_to 'Buy', car_sales_path(@car), data:{ turbo_method: :post}, class:"btn btn-success hover:text-success rounded-pill shadow-sm border m-1 px-5" %>
@@ -50,18 +48,6 @@
       </div>
   </div>
 
-  <div class="container bg-light rounded gap-3 d-grid p-5">
-    <div class='d-flex flex-column justify-content-center text-center list-inline mx-auto'>
-      <h5 class="h5-show">Vehicle Items</h5>
-      <ul class="list-group list-group-horizontal text-center">
-        <li class="list-group-item">Alarme</li>
-        <li class="list-group-item">CD Player</li>
-        <li class="list-group-item">Rádio</li>
-        <li class="list-group-item">Travas elétricas</li>
-      </ul>
-    </div>
-  </div>
-
   <div class="container bg-light rounded gap-3 d-grid p-5 mb-5">
     <div class='d-flex flex-column justify-content-center'>
       <h5 class="h5-show">About Seller</h5>
@@ -69,8 +55,6 @@
       <p><%= @car.user.last_name %></p>
       <p><%= @car.user.email %></p>
       <p><%= @car.location %></p>
-      <p>Pessoa Fisica</p>
-      <p>Telefone</p>
     </div>
   </div>
 
