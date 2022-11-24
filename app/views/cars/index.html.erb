@@ -12,11 +12,16 @@
       placeholder: "Find a car" %>
     <%= submit_tag "Search", class: "btn btn-secondary rounded-pill bg-blue shadow-sm border px-5 shadow" %>
   <% end %>
+  <% if @cars.empty? %>
+    <div class="alert alert-danger" role="alert">
+      We couldn't find any results for <strong><%= params[:query].upcase %></strong>
+    </div>
+  <% end %>
 </div>
 
 <div class="container d-flex row justify-content-center w-100 m-auto bg-white text-dark shadow">
   <% @cars.each do |car| %>
-  <% if car.available = true %>
+  <% if car.available %>
     <div class="container py-2 col-4">
       <div class="card-car my-3">
         <div id=<%= "carouselExampleIndicators#{car.id}" %> class="carousel slide" data-bs-interval="false">
@@ -59,8 +64,7 @@
             </div>
           </div>
         </div>
-      </div>
-     </div>
-  <% end %>
+    </div>
+    <% end %>
   <% end %>
 </div>
