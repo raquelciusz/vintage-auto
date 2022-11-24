@@ -25,20 +25,20 @@
     </button>
   </div>
   <div class="container bg-light rounded gap-3 d-grid p-3">
-    <div class="d-flex justify-content-around">
-      <div class="flex-grow-1">
-        <h1 class="h1-show">
-          <strong>
-            <p class='d-inline car-selection'><%= @car.year %></p>
-            <p class='d-inline car-name'><%= @car.model %></p>
-          </strong>
-        </h1>
-      </div>
-      <div>
-        <h3 class="h5-show">Price</h5>
-        <p><%= number_to_currency(@car.price, unit: "R$", separator: ",", delimiter: ".") %></p>
-      </div>
-      </div>
+      <div class="d-flex justify-content-around">
+        <div>
+          <h1 class="h1-show flex-grow-1">
+            <strong>
+              <p class='d-inline car-selection'><%= @car.year %></p>
+              <p class='d-inline car-name'><%= @car.model %></p>
+            </strong>
+          </h1>
+        </div>
+        <div>
+          <h3 class="h5-show">Price</h5>
+          <p><%= number_to_currency(@car.price, unit: "R$", separator: ",", delimiter: ".") %></p>
+        </div>
+    </div>
       <p class="text-center"><%= @car.description %></p>
       <div class="text-center">
         <%= link_to 'Buy', car_sales_path(@car), data:{ turbo_method: :post}, class:"btn btn-success hover:text-success rounded-pill shadow-sm border m-1 px-5" %>
