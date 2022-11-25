@@ -17,7 +17,7 @@
 
 .banner-landing-page {
   background-position: center;
-  width: 100%
+  width: 100%;
 }
 
 .card-product {
@@ -54,50 +54,4 @@
 .card-product-infos {
   padding: 32px;
   text-align: start;
-}
-
-.dark-background {
-  background-color: $green-water;
-  color: $cream;
-}
-
-footer {
-  font-family: $body-font;
-  text-align: center;
-  font-size: 1.9em;
-  padding: 40px 40px;
-  margin: 0 auto 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  h2 {
-    color: $cream;
-    font-weight: bold;
-    font-family: $body-font;
-  }
-
-  ul {
-    color: $cream;
-    size: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    list-style: none;
-    padding: 0;
-  }
-
-  a {
-    color: $cream;
-    text-decoration: none;
-    font-family: $body-font;
-  }
-
-  .address {
-    font-family: $body-font;
-    color: $cream;
-    font-style: normal;
-    font-size: 0.8em;
-    margin-bottom: 30px;
-  }
 }
