@@ -1,0 +1,42 @@
+footer {
+  background-color: $green-water;
+  color: $cream;
+  font-family: $body-font;
+  text-align: center;
+  font-size: 1.9em;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  h2 {
+    color: $cream;
+    font-weight: bold;
+    font-family: $body-font;
+  }
+
+  ul {
+    color: $cream;
+    size: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+  }
+
+  a {
+    color: $cream;
+    text-decoration: none;
+    font-family: $body-font;
+  }
+
+  .address {
+    font-family: $body-font;
+    color: $cream;
+    font-style: normal;
+    font-size: 0.8em;
+    margin-bottom: 30px;
+  }
+}
