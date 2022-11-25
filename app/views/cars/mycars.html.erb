@@ -1,22 +1,7 @@
+<br>
+<br>
 <div class="container">
-  <h1 class="text-center my-5">Find your car</h1>
-</div>
-
-<%# SEARCH BOX %>
-
-<div class="container mb-5 col-4">
-  <%= form_with url: cars_path, method: :get, class: "d-flex" do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control rounded-pill bg-white shadow border",
-      placeholder: "Find a car" %>
-    <%= submit_tag "Search", class: "btn btn-secondary rounded-pill bg-blue shadow-sm border px-5 shadow" %>
-  <% end %>
-  <% if @cars.empty? %>
-    <div class="alert alert-danger" role="alert">
-      We couldn't find any results for <strong><%= params[:query].upcase %></strong>
-    </div>
-  <% end %>
+  <h1 class="text-center my-5 h1-mycars">My Whips</h1>
 </div>
 
 <div class="container d-flex align-items-center justify-content-center bg-white text-dark shadow">
@@ -30,11 +15,11 @@
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" class="<%= 'active' if index.zero?   %>" aria-current="true" aria-label="Slide 1"></button>
               <% end %>
             </div>
-            <div class="carousel-inner">
+            <div class="carousel-inner" style="width: 400px;">
               <% if car.photos.attached? %>
                 <% car.photos.each_with_index do |photo, index| %>
                   <div class="carousel-item <%= index.zero? ? "active" : "" %>">
-                    <%= cl_image_tag photo.key, class: "d-block w-100", width: 400, height: 200, crop: :fill, style: "border-radius: 4px 4px 0 0" %>
+                    <%= cl_image_tag photo.key, class: "d-block w-100", height: 250, crop: :fill, style: "border-radius: 4px 4px 0 0" %>
                   </div>
                 <% end %>
               <% else %>

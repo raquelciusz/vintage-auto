@@ -7,8 +7,7 @@ class CarsController < ApplicationController
   def index
     @cars = policy_scope(Car)
     if params[:query].present?
-      sql_query = "brand ILIKE :query OR model ILIKE :query OR color ILIKE :query"
-      @cars = Car.where(sql_query, query: "%#{params[:query]}%")
+      @cars = Car.search(params[:query])
     else
       @cars = Car.all
     end
@@ -51,6 +50,11 @@ class CarsController < ApplicationController
   def edit
   end
 
+  def mycars
+    @cars = current_user.cars
+    authorize @cars
+  end
+
   private
   def set_car
     @car = Car.find(params[:id])
@@ -58,6 +62,6 @@ class CarsController < ApplicationController
   end
 
   def car_params
-    params.require(:car).permit(:brand, :model, :year, :km, :color, :type, :price, :location, :avaiable, :description, :user_id, :photo_url)
+    params.require(:car).permit(:brand, :model, :year, :km, :color, :type, :price, :location, :avaiable, :description, :user_id, photos: [])
   end
 end
