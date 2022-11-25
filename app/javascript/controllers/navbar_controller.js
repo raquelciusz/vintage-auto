@@ -16,5 +16,3 @@ export default class extends Controller {
     }
   };
 }
-
-// <%="navbar-transparent" if @transparent %>
