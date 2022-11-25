@@ -7,7 +7,7 @@
 <div class="container d-flex m-auto bg-white text-dark shadow">
   <% @cars.each do |car| %>
     <% if car.available %>
-      <div class="container-cards">
+      <div class="container-both">
           <div class="my-3 cards">
             <div id=<%= "carouselExampleIndicators#{car.id}" %> class="carousel slide" data-bs-interval="false">
             <div class="carousel-inner">
@@ -34,20 +34,21 @@
               <span class="visually-hidden">Next</span>
             </button>
           </div>
-            <div class="card-car-infos">
-              <div>
-                <h2><%= car.year %> <%= car.brand %> <%= car.model %></h2>
-                <br>
-                <h6><strong>KM:</strong> <%= car.km %>
-                <h6><strong>Color:</strong> <%= car.color %></h6>
-                <h6><strong>Location: </strong><%= car.location %></h6>
-                <div class="d-flex justify-content-between">
-                  <h2 class="card-car-pricing"><%= number_to_currency(car.price, unit: "R$", separator: ",", delimiter: ".") %></h2>
-                  <%= link_to 'Ver', car_path(car), class:"btn btn-secondary hover:text-secondary rounded-pill shadow-sm border px-5 shadow"%>
-                  <%= link_to 'Edit', edit_car_path(car), class:"btn btn-secondary hover:text-secondary rounded-pill shadow-sm border px-5 shadow"%>
-                </div>
+          <div class="card-car-infos container-infos">
+            <div>
+              <h2><%= car.year %> <%= car.brand %> <%= car.model %></h2>
+              <br>
+              <h6><strong>KM:</strong> <%= car.km %>
+              <h6><strong>Color:</strong> <%= car.color %></h6>
+              <h6><strong>Location: </strong><%= car.location %></h6>
+              <div class="d-flex justify-content-between">
+                <h2 class="card-car-pricing"><%= number_to_currency(car.price, unit: "R$", separator: ",", delimiter: ".") %></h2>
+                <%= link_to 'Ver', car_path(car), class:"btn btn-secondary hover:text-secondary rounded-pill shadow-sm border px-5 shadow"%>
+                <%= link_to 'Edit', edit_car_path(car), class:"btn btn-secondary hover:text-secondary rounded-pill shadow-sm border px-5 shadow"%>
               </div>
             </div>
+          </div>
+        </div>
       </div>
     <% end %>
   <% end %>

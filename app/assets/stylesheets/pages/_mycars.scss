@@ -3,14 +3,17 @@
   font-family: 'monoton', cursive;
 }
 
-.container-cards {
+.container-both {
   display: flex;
-  flex-direction: column;
-  gap: 5px;
+  flex-direction: row;
 }
 
-.cards {
-  max-width: 400px;
+.container-carousel {
+
+}
+
+.container-infos {
   padding: 15px;
   background-color: #B4CDE6;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.223);
 }
