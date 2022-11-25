@@ -1,12 +1,14 @@
+<br>
+<br>
 <div class="container">
-  <h1 class="text-center my-5">My Whips</h1>
+  <h1 class="text-center my-5 h1-mycars">My Whips</h1>
 </div>
 
 <div class="container d-flex m-auto bg-white text-dark shadow">
   <% @cars.each do |car| %>
     <% if car.available %>
-      <div class="cards">
-          <div class="my-3 ">
+      <div class="container-cards">
+          <div class="my-3 cards">
             <div id=<%= "carouselExampleIndicators#{car.id}" %> class="carousel slide" data-bs-interval="false">
             <div class="carousel-inner">
               <% if car.photos.attached? %>
@@ -39,15 +41,13 @@
                 <h6><strong>KM:</strong> <%= car.km %>
                 <h6><strong>Color:</strong> <%= car.color %></h6>
                 <h6><strong>Location: </strong><%= car.location %></h6>
-                <h6 class="mw-100 my-3"><%= car.description %></h6>
                 <div class="d-flex justify-content-between">
-                <%= link_to 'Ver', car_path(car), class:"btn btn-secondary hover:text-secondary rounded-pill shadow-sm border px-5 shadow"%>
-                <%= link_to 'Edit', edit_car_path(car), class:"btn btn-secondary hover:text-secondary rounded-pill shadow-sm border px-5 shadow"%>
-              <h2 class="card-car-pricing"><%= number_to_currency(car.price, unit: "R$", separator: ",", delimiter: ".") %></h2>
+                  <h2 class="card-car-pricing"><%= number_to_currency(car.price, unit: "R$", separator: ",", delimiter: ".") %></h2>
+                  <%= link_to 'Ver', car_path(car), class:"btn btn-secondary hover:text-secondary rounded-pill shadow-sm border px-5 shadow"%>
+                  <%= link_to 'Edit', edit_car_path(car), class:"btn btn-secondary hover:text-secondary rounded-pill shadow-sm border px-5 shadow"%>
                 </div>
               </div>
             </div>
-
       </div>
     <% end %>
   <% end %>
