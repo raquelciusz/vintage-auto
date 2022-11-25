@@ -12,6 +12,7 @@
       <% @sales.each do |sale|%>
         <td><%= sale.car.year %> <%= sale.car.brand %> <%= sale.car.model %></td>
         <td>R$ <%= sale.car.price %></td>
+        
       </tr>
     </thead>
       <% end %>
