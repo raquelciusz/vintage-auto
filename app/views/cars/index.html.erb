@@ -27,7 +27,7 @@
            <div id=<%= "carouselExampleIndicators#{car.id}" %> class="carousel slide" data-bs-interval="false">
             <div class="carousel-indicators">
               <% car.photos.each_with_index do |photo, index| %>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" class="<%= 'active' if index.zero?   %>" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" class="<%= 'active' if index.zero?%>" aria-current="true" aria-label="Slide 1"></button>
               <% end %>
             </div>
             <div class="carousel-inner">
