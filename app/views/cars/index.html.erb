@@ -34,7 +34,7 @@
               <% if car.photos.attached? %>
                 <% car.photos.each_with_index do |photo, index| %>
                   <div class="carousel-item <%= index.zero? ? "active" : "" %>">
-                    <%= cl_image_tag photo.key, class: "d-block", style: "border-radius: 4px 4px 0 0; width: 300px; height: 337px; object-fit: cover;" %>
+                    <%= cl_image_tag photo.key, class: "d-block", style: "border-radius: 4px 4px 0 0; width: 600px; height: 337px; object-fit: cover;" %>
                   </div>
                 <% end %>
               <% else %>
