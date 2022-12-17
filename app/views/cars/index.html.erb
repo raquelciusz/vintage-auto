@@ -30,10 +30,10 @@
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" class="<%= 'active' if index.zero?%>" aria-current="true" aria-label="Slide 1"></button>
               <% end %>
             </div>
-            <div class="carousel-inner" style="width: 450px">
+            <div class="carousel-inner">
               <% if car.photos.attached? %>
                 <% car.photos.each_with_index do |photo, index| %>
-                  <div class="carousel-item <%= index.zero? ? "active" : "" %>">
+                  <div style="width: 450px" class="carousel-item <%= index.zero? ? "active" : "" %>">
                     <%= cl_image_tag photo.key, class: "d-block w-100", width: 500, height: 400, crop: :fill, style: "border-radius: 4px 4px 0 0" %>
                   </div>
                 <% end %>
