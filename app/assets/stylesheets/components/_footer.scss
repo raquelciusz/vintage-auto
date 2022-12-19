@@ -3,8 +3,8 @@ footer {
   color: $cream;
   font-family: $body-font;
   text-align: center;
-  font-size: 1.9em;
-  padding: 40px;
+  font-size: 1.5em;
+  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,6 +24,7 @@ footer {
     gap: 10px;
     list-style: none;
     padding: 0;
+    margin-bottom: 0;
   }
 
   a {
