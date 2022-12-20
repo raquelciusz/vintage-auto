@@ -1,9 +1,10 @@
-.carousel-item {
+.carousel-inner {
   height: 340px;
 }
 
-.carousel-inner > img {
-  width: 636px;
-  object-fit: fill;
-  object-position: center;
+.carousel-img {
+  width: 640px;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px 4px 0 0
 }

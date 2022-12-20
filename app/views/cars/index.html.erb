@@ -33,12 +33,13 @@
             <div class="carousel-inner">
               <% if car.photos.attached? %>
                 <% car.photos.each_with_index do |photo, index| %>
-                  <div class="carousel-item <%= index.zero? ? "active" : "" %>" style="background-image: url('<%= cl_image_path photo.key %>')">
+                  <div class="carousel-item <%= index.zero? ? "active" : "" %>">
+                    <%= cl_image_tag photo.key, class: "d-block carousel-img" %>
                   </div>
                 <% end %>
               <% else %>
                 <div class="carousel-item active">
-                  <%= image_tag 'no-image-found.png', class: "d-block", style: "border-radius: 4px 4px 0 0; width: 600px; height: 337px; object-fit: cover;" %>
+                  <%= image_tag 'no-image-found.png', class: "d-block carousel-img" %>
                 </div>
               <% end %>
             </div>
