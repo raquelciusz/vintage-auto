@@ -20,10 +20,10 @@
 </div>
 
 <div class="container d-flex bg-white text-dark shadow">
-  <div class="row justify-content-around gap-5 my-4">
+  <div class="row justify-content-evenly">
     <% @cars.each do |car| %>
       <% if car.available %>
-        <div class="card-car col-sm-12 col-md-6 ">
+        <div class="card-car col-sm-12 col-md-6 my-4">
            <div id=<%= "carouselExampleIndicators#{car.id}" %> class="carousel slide" data-bs-interval="false">
             <div class="carousel-indicators">
               <% car.photos.each_with_index do |photo, index| %>
