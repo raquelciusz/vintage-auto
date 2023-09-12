@@ -1,21 +1,15 @@
-<%# <div class="banner-landing-page" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://i.pinimg.com/originals/6a/ff/ac/6affacd13a47de0a90ffb0a51a1bc388.jpg);">
-  <div class="container">
-  </div>
-</div> %>
-
 <div class="banner-landing-page">
   <%= video_tag "https://thegarage.com.br/wp-content/themes/thegarage/assets/video/the-garage.mp4", :autoplay => true, :loop => true, muted: 'muted', class: :standard_post_video, width: '100%', height: '100%' %>
   <h1 class="title-home">Vintage Garage</h1>
 </div>
 
-<div class="d-flex justify-content-around mt-5 mb-5">
+<div class="d-flex flex-wrap justify-content-around mt-5 mb-5">
   <div class="card-product">
     <img src="https://www.classicvwbugs.com/wp-content/uploads/2014/03/1955vert1.jpg" />
     <div class="card-product-infos">
       <h2>Beetles</h2>
       <p>Rock like a Beatle in your own<strong> Beetle!</strong>.</p>
       <%= link_to "See selection", cars_path(query: "beetle"), class: "button btn" %>
-      <%# CARDS TEM QUE SER CLICÁVEIS ROTAS (?) %>
     </div>
   </div>
 

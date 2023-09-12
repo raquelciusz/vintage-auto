@@ -5,30 +5,29 @@
   font-family: 'monoton', cursive;
   color: $green-water;
   text-align: center;
-  display: inline-block;
-  width: 100%;
-  font-size: 5em;
+  font-size: 2.5em; /* Adjusted font size for mobile */
+  z-index: 10;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 10;
 }
 
 .banner-landing-page {
   background-position: center;
   width: 100%;
+  position: relative;
 }
 
 .card-product {
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  width: 45%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  width: 100%;
   margin: 0px;
   border-radius: 5px;
 
   img {
-    height: 300px;
+    height: 300px; /* Set a fixed height for the images */
     width: 100%;
     object-fit: cover;
     border-radius: 5px;
@@ -36,22 +35,54 @@
 
   h2 {
     font-family: $body-font;
-    font-size: 24px;
+    font-size: 1.5em; /* Adjusted font size for all devices */
     font-weight: bold;
     margin: 0;
   }
 
   p {
     font-family: $body-font;
-    font-size: 20px;
+    font-size: 1.2em; /* Adjusted font size for all devices */
     line-height: 1.4;
-    opacity: .7;
+    opacity: 0.7;
     margin-bottom: 0;
     margin-top: 8px;
   }
 }
 
 .card-product-infos {
-  padding: 32px;
+  padding: 16px; /* Adjusted padding for all devices */
   text-align: start;
+}
+
+/* Responsive styles for tablets */
+@media (min-width: 768px) {
+  .title-home {
+    font-size: 3em; /* Adjusted font size for tablets */
+  }
+
+  .card-product {
+    width: 48%; /* Two cards per row with some spacing for tablets */
+    margin-right: 2%; /* Add a small gap between cards */
+  }
+}
+
+/* Responsive styles for desktop screens */
+@media (min-width: 992px) {
+  .title-home {
+    font-size: 4em; /* Adjusted font size for desktops */
+  }
+
+  .card-product {
+    width: 31.33%; /* Three cards per row with some spacing for desktops */
+    margin-right: 2%; /* Add a small gap between cards */
+  }
+}
+
+/* Adjust card-product size for mobile screens */
+@media (max-width: 576px) {
+  .card-product {
+    width: 80%; /* Set to 70% of the parent container's width for mobile */
+    margin-bottom: 15%; /* Increase the vertical spacing by 15% */
+  }
 }

@@ -1,20 +1,16 @@
 class CarsController < ApplicationController
   before_action :set_car, only: %i[show edit update destroy]
-  skip_before_action :authenticate_user!, only: %i[index show]
-  skip_after_action :verify_authorized, only: :show
-  skip_after_action :verify_policy_scoped, only: :index
+  before_action :authenticate_user!, except: %i[index show]
+  after_action :verify_authorized, only: :show
+  after_action :verify_policy_scoped, only: :index
 
   def index
     @cars = policy_scope(Car)
-    if params[:query].present?
-      @cars = Car.search(params[:query])
-    else
-      @cars = Car.all
-    end
+    @cars = Car.search(params[:query]) if params[:query].present?
   end
 
   def show
-    authorize @car
+    @car = policy_scope(@car).first
   end
 
   def new
@@ -22,24 +18,9 @@ class CarsController < ApplicationController
     authorize @car
   end
 
-  def update
-    if @car.update!(car_params)
-      redirect_to @car, notice: "Your car was successfully updated"
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
-
-  def destroy
-    @car.destroy
-    redirect_to cars_path, notice: "Car was successfully destroyed."
-  end
-
   def create
-    @car = Car.create(car_params)
-    @car.user = current_user
+    @car = current_user.cars.build(car_params)
     authorize @car
-    # current_user
     if @car.save
       redirect_to car_path(@car)
     else
@@ -48,6 +29,22 @@ class CarsController < ApplicationController
   end
 
   def edit
+    @car = policy_scope(@car).first
+  end
+
+  def update
+    @car = policy_scope(@car).first
+    if @car.update(car_params)
+      redirect_to car_path(@car), notice: "Your car was successfully updated"
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @car = policy_scope(@car).first
+    @car.destroy
+    redirect_to cars_path, notice: "Car was successfully destroyed."
   end
 
   def mycars
@@ -56,6 +53,7 @@ class CarsController < ApplicationController
   end
 
   private
+
   def set_car
     @car = Car.find(params[:id])
     authorize @car

@@ -6,7 +6,7 @@ footer {
   font-size: 1.9em;
   padding: 40px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   width: 100%;
 
@@ -18,7 +18,7 @@ footer {
 
   ul {
     color: $cream;
-    size: 20px;
+    font-size: 1.2em;
     display: flex;
     justify-content: center;
     gap: 10px;
@@ -37,6 +37,31 @@ footer {
     color: $cream;
     font-style: normal;
     font-size: 0.8em;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5em;
+    .address {
+      font-size: 0.7em;
+      margin-bottom: 10px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    padding: 10px;
+    h2 {
+      font-size: 0.8em;
+    }
+    ul {
+      font-size: 0.6em;
+    }
+    footer {
+      font-size: 40%; /* Set font size to 70% for mobile */
+    }
+
   }
 }

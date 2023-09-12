@@ -1,6 +1,11 @@
+/* Default navbar styles */
+
+/* Remove transparency settings, if any */
 .navbar-lewagon {
   justify-content: space-between;
-  background: $green-water;
+  background: $green-water; /* Set your desired background color here */
+  position: relative;
+  z-index: 1; /* Ensure the navbar is at a lower stacking order */
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -14,10 +19,7 @@
   border-radius: 20%;
   display: flex;
   justify-content: space-between;
-}
-
-.navbar-transparent {
-  background-color: transparent;
+  z-index: 2; /* Ensure the brand is at a higher stacking order */
 }
 
 .container-fluid {
