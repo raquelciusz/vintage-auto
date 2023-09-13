@@ -4,12 +4,6 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
-.card-car > img {
-  height: 200px;
-  width: 100%;
-  object-fit: cover;
-}
-
 .card-car h2 {
   font-size: 16px;
   font-weight: bold;
@@ -22,8 +16,12 @@
   margin: 0;
 }
 
+.card-car {
+  width: 600px;
+  box-shadow: rgba(0, 0, 0, 0.24) 1px 3px 8px;
+}
 
-.card-car .card-car-infos {
+.card-car-infos {
   padding: 16px;
   display: flex;
   justify-content: space-between;
