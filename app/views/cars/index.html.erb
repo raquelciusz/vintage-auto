@@ -19,7 +19,6 @@
   <% end %>
 </div>
 
-<<<<<<< HEAD
 <div class="container">
   <div class="row justify-content-center card-container">
     <% @cars.each do |car| %>
@@ -53,31 +52,6 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
               </a>
-=======
-<div class="container d-flex bg-white text-dark shadow">
-  <div class="row justify-content-evenly">
-    <% @cars.each do |car| %>
-      <% if car.available %>
-        <div class="card-car col-sm-12 col-md-6 my-4">
-           <div id=<%= "carouselExampleIndicators#{car.id}" %> class="carousel slide" data-bs-interval="false">
-            <div class="carousel-indicators">
-              <% car.photos.each_with_index do |photo, index| %>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" class="<%= 'active' if index.zero?%>" aria-current="true" aria-label="Slide 1"></button>
-              <% end %>
-            </div>
-            <div class="carousel-inner">
-              <% if car.photos.attached? %>
-                <% car.photos.each_with_index do |photo, index| %>
-                  <div class="carousel-item <%= index.zero? ? "active" : "" %>">
-                    <%= cl_image_tag photo.key, class: "d-block carousel-img" %>
-                  </div>
-                <% end %>
-              <% else %>
-                <div class="carousel-item active">
-                  <%= image_tag 'no-image-found.png', class: "d-block carousel-img" %>
-                </div>
-              <% end %>
->>>>>>> 936430051a2c83e6d095b74f2839a0abfb80c7e3
             </div>
             <div class="card-body">
               <h2><%= car.year %> <%= car.brand %> <%= car.model %></h2>
@@ -87,11 +61,7 @@
               <p class="my-3"><%= car.description %></p>
               <h2 class="card-car-pricing"><%= number_to_currency(car.price, unit: "R$", separator: ",", delimiter: ".") %></h2>
               <div class="d-flex justify-content-between">
-<<<<<<< HEAD
                 <%= link_to 'Find', car_path(car), class:"btn btn-secondary hover:text-secondary rounded-pill shadow-sm border mt-4 px-3 shadow"%>
-=======
-                <%= link_to 'Ver', car_path(car), class:"btn btn-secondary rounded-pill bg-blue shadow-sm border px-5 shadow"%>
->>>>>>> 936430051a2c83e6d095b74f2839a0abfb80c7e3
               </div>
             </div>
           </div>

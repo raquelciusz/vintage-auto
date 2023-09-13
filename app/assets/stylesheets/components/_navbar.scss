@@ -10,6 +10,7 @@
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
+
 }
 
 .navbar-lewagon .navbar-brand {
@@ -24,9 +25,26 @@
 
 .container-fluid {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center
 }
 
 .nav-item {
   color: $cream;
+}
+/* Custom CSS for centering li elements */
+.navbar-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Center text within each li */
+.navbar-nav .nav-item {
+  text-align: center;
+}
+/* Center-align the parent container */
+.navbar {
+  display: flex;
+  justify-content: center;
+  /* Add any additional styles as needed */
 }

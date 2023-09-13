@@ -1,28 +1,24 @@
-<div class="container">
+<div class="container-fluid">
 
   <%= simple_form_for(@car) do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-    <div class="d-flex justify-content-around mt-5 mb-5" id="form-bg">
-      <%# <div class="form-inputs">  %>
-      <div class=>
-
-          <%= f.input :model, placeholder: 'model' %>
-          <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-          <%= f.input :year, placeholder: 'year' %>
-          <%= f.input :description, placeholder: 'description' %>
+    <div class="d-md-flex justify-content-around m-3" id="form-bg">
+      <div class="col-md-6">
+        <%= f.input :model, placeholder: 'Model' %>
+        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+        <%= f.input :year, placeholder: 'Year' %>
+        <%= f.input :description, placeholder: 'Description' %>
+        <%= f.input :color, placeholder: 'Color' %>
       </div>
-      <div>
-          <%= f.input :color, placeholder: 'color' %>
-          <%= f.input :km, placeholder: 'Kilometers' %>
-          <%= f.input :price, placeholder: 'price' %>
-          <%= f.input :location, placeholder: 'location' %>
-          <%= f.submit class: 'btn btn-outline-dark hover:text-primary rounded-pill shadow-sm border px-4' %>
-
-          <%=link_to "Back", "/", class: 'btn btn-outline-dark hover:text-primary rounded-pill shadow-sm border px-4'%>
+      <div class="col-md-6">
+        <%= f.input :km, placeholder: 'Kilometers' %>
+        <%= f.input :price, placeholder: 'Price' %>
+        <%= f.input :location, placeholder: 'Location' %>
+        <%= f.submit class: 'btn btn-outline-dark hover:text-primary rounded-pill shadow-sm border px-4' %>
+        <%= link_to "Back", "/", class: 'btn btn-outline-dark hover:text-primary rounded-pill shadow-sm border px-4' %>
       </div>
-  </div>
-    <%# </div> %>
+    </div>
   <% end %>
 </div>

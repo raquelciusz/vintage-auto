@@ -1,23 +1,15 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top" data-controller="navbar" data-action="scroll@window->navbar#updateNavbar">
-<<<<<<< HEAD
-  <div class="container">
+  <div class="container-fluid">
     <a class="navbar-brand rounded" href="<%= root_path %>">
       <%= image_tag 'logo-wheel.gif', class: "img-fluid", alt: "Logo"  %>
     </a>
-=======
-  <a class="navbar-brand rounded" href="<%= root_path %>">
-    <%= image_tag 'logo-wheel.jpg' %>
-  </a>
-
-  <div class="container-fluid justify-content-end">
->>>>>>> 936430051a2c83e6d095b74f2839a0abfb80c7e3
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-      <ul class="navbar-nav" data-action="scroll@window->navbar#updateNavbar">
+    <div class="navbar-nav collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+      <ul class="navbar-nav navbar" data-action="scroll@window->navbar#updateNavbar">
         <% if user_signed_in? %>
           <li class="nav-item active" data-action="scroll@window->navbar#updateNavbar" data-navbar-target="li">
             <strong><%= link_to current_user.first_name, "/", class: "nav-link" %></strong>

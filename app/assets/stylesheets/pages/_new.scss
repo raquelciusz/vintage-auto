@@ -4,3 +4,25 @@
 .smaller-input {
   width: 50%;
 }
+/* Base styles */
+.container {
+  max-width: 800px; /* Adjust the maximum width as needed */
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.h1-mycars {
+  font-size: 24px; /* Adjust font size as needed */
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
+
+  .h1-mycars {
+    font-size: 20px; /* Adjust font size for smaller screens */
+  }
+}

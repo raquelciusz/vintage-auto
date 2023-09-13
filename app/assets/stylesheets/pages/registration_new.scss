@@ -1,13 +1,4 @@
-/* Center the container vertically and horizontally */
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-}
 
-/* Style the form inputs as three columns */
 .form-inputs .col-md-4 {
   margin-bottom: 15px;
 }

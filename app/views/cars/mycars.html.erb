@@ -15,28 +15,16 @@
                 <button type="button" data-bs-target="<%= "carouselExampleIndicators#{car.id}" %>" data-bs-slide-to="<%= index %>" class="<%= index.zero? ? 'active' : '' %>" aria-current="true" aria-label="Slide <%= index + 1 %>"></button>
               <% end %>
             </div>
-<<<<<<< HEAD
             <div class="carousel-inner">
               <% if car.photos.attached? %>
                 <% car.photos.each_with_index do |photo, index| %>
                   <div class="carousel-item <%= index.zero? ? 'active' : '' %>">
                     <%= cl_image_tag photo.key, class: 'd-block w-100', height: 250, crop: :fill, style: 'border-radius: 4px 4px 0 0' %>
-=======
-            <div class="carousel-inner" style="width: 500px;">
-              <% if car.photos.attached? %>
-                <% car.photos.each_with_index do |photo, index| %>
-                  <div class="carousel-item <%= index.zero? ? "active" : "" %>">
-                    <%= cl_image_tag photo.key, class: "d-block w-100", height: 300, crop: :fill, style: "border-radius: 4px 4px 0 0" %>
->>>>>>> 936430051a2c83e6d095b74f2839a0abfb80c7e3
                   </div>
                 <% end %>
               <% else %>
                 <div class="carousel-item active">
-<<<<<<< HEAD
                   <%= image_tag 'no-image-found.png', class: 'd-block w-100', height: 200, width: 400, crop: :fill %>
-=======
-                  <%= image_tag 'no-image-found.png', class: "d-block w-100", height: 300, width: 400, crop: :fill %>
->>>>>>> 936430051a2c83e6d095b74f2839a0abfb80c7e3
                 </div>
               <% end %>
             </div>
