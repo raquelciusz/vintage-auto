@@ -1,63 +1,49 @@
-<br>
-<br>
-<div class="bg-dark d-grid gap-3">
-  <div id=<%= "carouselExampleIndicators#{@car.id}" %> class="carousel slide" data-bs-interval="false">
-    <div class="carousel-inner carousel-inner-show justify-content-center align-center">
+<div class="container my-5">
+  <div id="<%= "carouselExampleIndicators#{@car.id}" %>" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
       <% if @car.photos.attached? %>
-      <% @car.photos.each_with_index do |photo, index| %>
-      <div class="carousel-item carousel-show <%= index.zero? ? "active" : "" %>">
-        <%= cl_image_tag photo.key, class: "d-block w-100", style: 'width:100%; height:100%;', crop: :fill %>
-      </div>
-      <% end %>
+        <% @car.photos.each_with_index do |photo, index| %>
+          <div class="carousel-item <%= index.zero? ? 'active' : '' %>">
+            <%= cl_image_tag photo.key, class: 'd-block w-100', style: 'max-height: 500px; object-fit: cover;' %>
+          </div>
+        <% end %>
       <% else %>
-      <div class="carousel-item carousel-show active">
-        <%= image_tag 'no-image-found.png', class: "d-block w-100", height: 300, width: 400, crop: :fill %>
-      </div>
+        <div class="carousel-item active">
+          <%= image_tag 'no-image-found.png', class: 'd-block w-100', style: 'max-height: 500px; object-fit: cover;' %>
+        </div>
       <% end %>
     </div>
-    <button class="carousel-control-prev" type="button"
-      data-bs-target="<%= "#carouselExampleIndicators#{@car.id}" %>" data-bs-slide="prev">
+    <a class="carousel-control-prev" href="<%= "#carouselExampleIndicators#{@car.id}" %>" role="button" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button"
-      data-bs-target="<%= "#carouselExampleIndicators#{@car.id}" %>" data-bs-slide="next">
+    </a>
+    <a class="carousel-control-next" href="<%= "#carouselExampleIndicators#{@car.id}" %>" role="button" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
-    </button>
+    </a>
   </div>
-  <div class="container bg-light rounded gap-3 d-grid p-3">
-      <div class="d-flex justify-content-around">
-        <div>
-          <h1 class="h1-show flex-grow-1">
-              <p class='d-inline car-selection'><%= @car.year %></p>
-              <p class='d-inline car-name'><%= @car.model %></p>
-          </h1>
-        </div>
+  <div class="container mt-3">
+    <div class="d-flex justify-content-between">
+      <h1 class="h1-show flex-grow-1">
+        <%= @car.year %> <%= @car.model %>
+      </h1>
+      <h3 class="h5-show">Price:</h3>
+      <p><%= number_to_currency(@car.price, unit: "R$", separator: ",", delimiter: ".") %></p>
     </div>
-      <div class="text-center">
-        <h3 class="h5-show">Price</h5>
-        <p><%= number_to_currency(@car.price, unit: "R$", separator: ",", delimiter: ".") %></p>
-      </div>
-      <p class="text-center"><%= @car.description %></p>
-      <div class="text-center">
-        <%= link_to 'Buy', car_sales_path(@car), data:{ turbo_method: :post}, class:"btn btn-success hover:text-success rounded-pill shadow-sm border m-1 px-5" %>
-        <%= link_to 'Back', cars_path, class:"btn btn-secondary hover:text-secondary rounded-pill shadow-sm border m-1 px-5" %>
-        <% if policy(@car).edit? %>
-          <%= link_to "Edit", edit_car_path(@car), class:"btn btn-secondary hover:text-secondary rounded-pill shadow-sm border m-1 px-5" %>
-        <% end %>
-        <%= button_to "Delete", @car, class:"btn btn-danger hover:text-danger rounded-pill shadow-sm border m-1 px-4", method: :delete if policy(@car).destroy? %>
-      </div>
-  </div>
-
-  <div class="container bg-light rounded gap-3 d-grid p-5 mb-5">
-    <div class='d-flex flex-column justify-content-center'>
-      <h5 class="h5-show">About Seller</h5>
-      <p><%= @car.user.first_name %></p>
-      <p><%= @car.user.last_name %></p>
-      <p><%= @car.user.email %></p>
-      <p><%= @car.location %></p>
+    <p class="text-center"><%= @car.description %></p>
+    <div class="text-center">
+      <%= link_to 'Buy', car_sales_path(@car), data: { turbo_method: :post }, class: "btn btn-success rounded-pill shadow-sm border m-1 px-5" %>
+      <%= link_to 'Back', cars_path, class: "btn btn-secondary rounded-pill shadow-sm border m-1 px-5" %>
+      <% if policy(@car).edit? %>
+        <%= link_to 'Edit', edit_car_path(@car), class: "btn btn-secondary rounded-pill shadow-sm border m-1 px-5" %>
+      <% end %>
+      <%= button_to 'Delete', @car, class: "btn btn-danger rounded-pill shadow-sm border m-1 px-4", method: :delete if policy(@car).destroy? %>
     </div>
   </div>
-
+  <div class="container mt-5">
+    <h5 class="h5-show">About Seller</h5>
+    <p><%= @car.user.first_name %> <%= @car.user.last_name %></p>
+    <p><%= @car.user.email %></p>
+    <p><%= @car.location %></p>
+  </div>
 </div>

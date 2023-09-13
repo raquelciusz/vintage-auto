@@ -1,72 +1,67 @@
+<!-- index.html.erb -->
+
 <div class="container">
-  <h1 class="text-center my-5">Find your car</h1>
+  <h1 class="text-center my-5 h1-mycars">Find your car</h1>
 </div>
 
-<%# SEARCH BOX %>
-
-<div class="container mb-5 col-4">
-  <%= form_with url: cars_path, method: :get, class: "d-flex" do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control rounded-pill bg-white shadow border",
+<div class="container mb-5">
+  <%= form_with url: cars_path, method: :get, class: "d-flex justify-content-center" do |f| %>
+    <%= f.text_field :query,
+      class: "form-control rounded-pill bg-white shadow border px-4",
       placeholder: "Find a car" %>
-    <%= submit_tag "Search", class: "btn btn-secondary rounded-pill bg-blue shadow-sm border px-5 shadow" %>
+    <%= f.submit "Search", class: "btn btn-secondary btn-sm shadow-sm border px-3 mx-1 shadow" %>
   <% end %>
+
   <% if @cars.empty? %>
-    <div class="alert alert-danger" role="alert">
+    <div class="alert alert-danger text-center mt-3" role="alert">
       We couldn't find any results for <strong><%= params[:query].upcase %></strong>
     </div>
   <% end %>
 </div>
 
-<div class="container d-flex align-items-center justify-content-center bg-white text-dark shadow">
-  <div class="row justify-content-between">
+<div class="container">
+  <div class="row justify-content-center card-container">
     <% @cars.each do |car| %>
       <% if car.available %>
-        <div class="card-car my-3 col-sm-12 col-md-6 ">
-           <div id=<%= "carouselExampleIndicators#{car.id}" %> class="carousel slide" data-bs-interval="false">
-            <div class="carousel-indicators">
-              <% car.photos.each_with_index do |photo, index| %>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" class="<%= 'active' if index.zero?   %>" aria-current="true" aria-label="Slide 1"></button>
-              <% end %>
-            </div>
-            <div class="carousel-inner">
-              <% if car.photos.attached? %>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card">
+            <div id=<%= "carouselExampleIndicators#{car.id}" %> class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-indicators">
                 <% car.photos.each_with_index do |photo, index| %>
-                  <div class="carousel-item <%= index.zero? ? "active" : "" %>">
-                    <%= cl_image_tag photo.key, class: "d-block w-100", width: 400, height: 200, crop: :fill, style: "border-radius: 4px 4px 0 0" %>
+                  <button type="button" data-bs-target=<%= "\"#carouselExampleIndicators#{car.id}\"" %> data-bs-slide-to="<%= index %>" class="<%= index.zero? ? "active" : "" %>"></button>
+                <% end %>
+              </div>
+              <div class="carousel-inner">
+                <% if car.photos.attached? %>
+                  <% car.photos.each_with_index do |photo, index| %>
+                    <div class="carousel-item <%= index.zero? ? "active" : "" %>">
+                      <%= cl_image_tag photo.key, class: "d-block w-100", crop: :fill, style: "border-radius: 4px 4px 0 0" %>
+                    </div>
+                  <% end %>
+                <% else %>
+                  <div class="carousel-item active">
+                    <%= image_tag 'no-image-found.png', class: "d-block w-100", crop: :fill %>
                   </div>
                 <% end %>
-              <% else %>
-                <div class="carousel-item active">
-                  <%= image_tag 'no-image-found.png', class: "d-block w-100", height: 200, width: 400, crop: :fill %>
-                </div>
-              <% end %>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleIndicators<%= car.id %>" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleIndicators<%= car.id %>" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </a>
             </div>
-
-            <button class="carousel-control-prev" type="button"
-              data-bs-target="<%= "#carouselExampleIndicators#{car.id}" %>" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button"
-              data-bs-target="<%= "#carouselExampleIndicators#{car.id}" %>" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div>
-          <div class="card-car-infos">
-            <div>
+            <div class="card-body">
               <h2><%= car.year %> <%= car.brand %> <%= car.model %></h2>
-              <br>
-              <h6><strong>KM:</strong> <%= car.km %>
+              <h6><strong>KM:</strong> <%= car.km %></h6>
               <h6><strong>Color:</strong> <%= car.color %></h6>
-
               <h6><strong>Location: </strong><%= car.location %></h6>
-              <h6 class="mw-100 my-3"><%= car.description %></h6>
+              <p class="my-3"><%= car.description %></p>
               <h2 class="card-car-pricing"><%= number_to_currency(car.price, unit: "R$", separator: ",", delimiter: ".") %></h2>
               <div class="d-flex justify-content-between">
-                <%= link_to 'Ver', car_path(car), class:"btn btn-secondary hover:text-secondary rounded-pill shadow-sm border px-5 shadow"%>
+                <%= link_to 'Find', car_path(car), class:"btn btn-secondary hover:text-secondary rounded-pill shadow-sm border mt-4 px-3 shadow"%>
               </div>
             </div>
           </div>

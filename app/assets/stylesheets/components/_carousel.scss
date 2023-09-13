@@ -1,11 +1,39 @@
-.carousel-inner > .carousel-item > img {
-  width:100%;
-  background-size: cover;
+/* Updated _carousel.scss */
+.container.my-3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.carousel-inner-show {
-  width: 100%;
-  height: 600px;
-  object-fit: fill;
-  object-position: center;
+.carousel-inner {
+  text-align: center;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  top: auto;
+  bottom: 20px;
+}
+
+/* Add responsive styles for the carousel */
+@media (max-width: 576px) {
+  .carousel-inner img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  .carousel-inner img {
+    max-width: 80%;
+    height: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .carousel-inner img {
+    max-width: 100%;
+    height: auto;
+  }
 }

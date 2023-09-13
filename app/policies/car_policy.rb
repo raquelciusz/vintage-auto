@@ -1,27 +1,22 @@
 class CarPolicy < ApplicationPolicy
   class Scope < Scope
-    # NOTE: Be explicit about which records you allow access to!
     def resolve
-      # scope.all # Restaurant.all
-      # if user.admin?
-      #   scope.all # admins podem ver tudo
-      # else
-      #   scope.where(user:) # outros usuários só podem ver o que criaram
-      # end
-      scope.includes(:sale).where(sales: {id: nil})
+      return scope.all if user.admin?
+
+      Car.includes(:sales).where(sales: { id: nil })
     end
   end
 
   def show?
-    true # todos podem ver o car
+    true # All users can view a car.
   end
 
   def new?
-    true
+    true # All users can create a new car.
   end
 
   def create?
-    true # todos podem criar um car
+    true # All users can create a new car.
   end
 
   def edit?
@@ -37,16 +32,13 @@ class CarPolicy < ApplicationPolicy
   end
 
   def mycars?
-    true
+    true # All users can view their own cars.
   end
 
   private
 
   def owner?
-    # verificar se o usuário do restaurate é o usuário logado
-    # record = @car
-    # record.user = @car.user
-    # user = current_user
+    # Check if the user is the owner of the car.
     record.user == user
   end
 end

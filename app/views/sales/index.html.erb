@@ -1,49 +1,49 @@
-<h1 class="text-center my-5">My purchases:</h1>
+<h1 class="text-center my-5 h1-mycars">My purchases:</h1>
 
 <% @sales.each do |sale|%>
-  <div class="bg-dark d-grid gap-3">
-    <div id=<%= "carouselExampleIndicators#{sale.car.id}" %> class="carousel slide" data-bs-interval="false">
-      <div class="carousel-inner carousel-inner-show justify-content-center align-center">
-        <% if sale.car.photos.attached? %>
-        <% sale.car.photos.each_with_index do |photo, index| %>
-        <div class="carousel-item carousel-show <%= index.zero? ? "active" : "" %>">
-          <%= cl_image_tag photo.key, class: "d-block w-100", style: 'width:100%; height:100%;', crop: :fill %>
-        </div>
-        <% end %>
-        <% else %>
-        <div class="carousel-item carousel-show active">
-          <%= image_tag 'no-image-found.png', class: "d-block w-100", height: 300, width: 400, crop: :fill %>
-        </div>
-        <% end %>
-      </div>
-      <button class="carousel-control-prev" type="button"
-        data-bs-target="<%= "#carouselExampleIndicators#{sale.car.id}" %>" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button"
-        data-bs-target="<%= "#carouselExampleIndicators#{sale.car.id}" %>" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-    <div class="container bg-light rounded gap-3 d-grid p-3">
-        <div class="d-flex justify-content-around">
-          <div>
-            <h1 class="h1-show flex-grow-1">
-                <p class='d-inline car-selection'><%= sale.car.year %></p>
-                <p class='d-inline car-name'><%= sale.car.model %></p>
-            </h1>
+  <div class="container my-3 d-flex justify-content-center">
+    <div class="bg-dark d-grid gap-3">
+      <div id="<%= "carouselExampleIndicators#{sale.car.id}" %>" class="carousel slide" data-bs-interval="false">
+        <div class="carousel-inner">
+          <% if sale.car.photos.attached? %>
+          <% sale.car.photos.each_with_index do |photo, index| %>
+          <div class="carousel-item <%= index.zero? ? "active" : "" %>">
+            <%= cl_image_tag photo.key, class: "d-block w-100", style: 'max-width: 100%; height: auto;', crop: :fill %>
           </div>
+          <% end %>
+          <% else %>
+          <div class="carousel-item active">
+            <%= image_tag 'no-image-found.png', class: "d-block w-100", style: 'max-width: 100%; height: auto;', crop: :fill %>
+          </div>
+          <% end %>
+        </div>
+        <button class="carousel-control-prev" type="button"
+          data-bs-target="<%= "#carouselExampleIndicators#{sale.car.id}" %>" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button"
+          data-bs-target="<%= "#carouselExampleIndicators#{sale.car.id}" %>" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
+      <div class="container bg-light rounded gap-3 d-grid p-3">
+        <div class="d-flex justify-content-center">
+          <h1 class="h1-show flex-grow-1 text-center">
+            <p class='d-inline car-selection'><%= sale.car.year %></p>
+            <p class='d-inline car-name'><%= sale.car.model %></p>
+          </h1>
+        </div>
         <div class="text-center">
-          <h3 class="h5-show">Price</h5>
+          <h3 class="h5-show">Price</h3>
           <p><%= number_to_currency(sale.car.price, unit: "R$", separator: ",", delimiter: ".") %></p>
         </div>
         <p class="text-center"><%= sale.car.description %></p>
         <div class="text-center">
           <%= link_to 'Back', root_path, class:"btn btn-secondary hover:text-secondary rounded-pill shadow-sm border m-1 px-5" %>
         </div>
+      </div>
     </div>
   </div>
 <% end %>

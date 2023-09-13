@@ -1,7 +1,11 @@
-<br>
-<br>
-<div class="container m-4 auto bg-white text-dark mt-5 m-auto border border-1 shadow">
-  <h1 class="p-4">Congratulations!</h1>
-  <h5 class="m-4">You just bought <%= @sale.car.model %></h5>
-  <%= link_to 'Back', cars_path, class:"btn btn-secondary hover:text-secondary rounded-pill shadow-sm border m-4"%>
+<div class="container my-5">
+  <div class="card shadow">
+    <div class="card-body">
+      <h1 class="card-title text-center my-5">Congratulations!</h1>
+      <h5 class="card-text text-center">You just bought <%= @sale.car.model %></h5>
+      <div class="text-center mt-5">
+        <%= link_to 'Back', cars_path, class: "btn btn-secondary rounded-pill" %>
+      </div>
+    </div>
+  </div>
 </div>
